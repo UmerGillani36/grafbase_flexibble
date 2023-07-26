@@ -39,20 +39,20 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async session({ session }) {
-      const email = session?.user?.email as string;
+      // const email = session?.user?.email as string;
 
       try { 
-        const data = await getUser(email) as { user?: UserProfile }
+        // const data = await getUser(email) as { user?: UserProfile }
 
-        const newSession = {
-          ...session,
-          user: {
-            ...session.user,
-            ...data?.user,
-          },
-        };
+        // const newSession = {
+        //   ...session,
+        //   user: {
+        //     ...session.user,
+        //     ...data?.user,
+        //   },
+        // };
 
-        return newSession;
+        return session;
       } catch (error: any) {
         console.error("Error retrieving user data: ", error.message);
         return session;
